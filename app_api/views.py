@@ -100,6 +100,12 @@ class AudioFileView(APIView):
                 output_detail = "Invalid ID"
         else:
             output_detail = "Id is required parameter"
+        context = {
+            "status" : output_status,
+            "detail" : output_detail,
+            "data" : output_data
+        }
+        return Response (context, status=res_status, content_type="application/json")
 
 
 class SongView(AudioFileView):
